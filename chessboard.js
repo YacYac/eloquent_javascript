@@ -1,11 +1,21 @@
-function addLine(firstChar,secondChar) {
-  console.log(firstChar+secondChar+firstChar+secondChar+firstChar+secondChar+firstChar+secondChar);
+function addLine(firstChar,secondChar,size) {
+  var string = '';
+  for (var i = 0; i < size; i++) {
+    if (i % 2 === 0) {
+      string += firstChar;
+    } else {
+      string += secondChar;
+    }
+  }
+  console.log(string);
 }
 
-for (var i = 1; i <= 8; i++) {
-  if (i % 2 === 1) {
-    addLine(' ','#');
+var size = 12;
+
+for (var i = 0; i < size; i++) {
+  if (i % 2 === 0) {
+    addLine(' ','#',size);
   } else {
-    addLine('#',' ');
+    addLine('#',' ',size);
   }
 }
