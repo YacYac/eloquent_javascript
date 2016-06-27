@@ -21,8 +21,3 @@ fs.readFile('ancestry.js',function(err,data) {
 
   console.log(average(ageDifferences));
 });
-
-//
-
-// Your code here.
-// → 31.2
