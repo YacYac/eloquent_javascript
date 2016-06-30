@@ -1,5 +1,5 @@
 var rabbit = {};
-rabbit.speak = function(line) {
+function speak(line) {
   console.log("The " + this.type + " says '" + line + "'");
 };
 var whiteRabbit = {type: "white", speak: speak};
