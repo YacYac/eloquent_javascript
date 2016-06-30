@@ -11,3 +11,12 @@ fatRabbit.speak("I sure could use a carrot right now.")
 
 speak.apply(fatRabbit, ["Burp!"]);
 speak.call({type: "old"}, "Oh my.");
+
+var protoRabbit = {
+  speak: function (line) {
+    console.log("The " + this.type + " rabbit says '" + line + "'");
+  }
+};
+var killerRabbit = Object.create(protoRabbit);
+killerRabbit.type = "killer";
+killerRabbit.speak("SKREEEE!");
