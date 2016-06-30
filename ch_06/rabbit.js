@@ -33,3 +33,14 @@ Rabbit.prototype.speak = function (line) {
   console.log("The " + this.type + " rabbit says '" + line + "'");
 };
 blackRabbit.speak("Doom...");
+Rabbit.prototype.teeth = "small";
+console.log(killerRabbit.teeth);
+killerRabbit.teeth = "Long, sharp, and bloody";
+console.log(killerRabbit.teeth);
+console.log(blackRabbit.teeth);
+console.log(Rabbit.prototype.teeth);
+
+Rabbit.prototype.dance = function () {
+  console.log("The " + this.type + " rabbit dances a jig.");
+};
+killerRabbit.dance();
