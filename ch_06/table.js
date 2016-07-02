@@ -1,3 +1,5 @@
+var fs = require('fs');
+
 function rowHeights(rows) {
   return rows.map(function (row) {
     return row.reduce(function (max, cell) {
@@ -77,3 +79,36 @@ for (var i = 0; i < 5; i++) {
   rows.push(row);
 }
 console.log(drawTable(rows));
+
+function UnderlinedCell(inner) {
+  this.inner = inner;
+}
+UnderlinedCell.prototype.minWidth = function () {
+  return this.inner.minWidth();
+};
+UnderlinedCell.prototype.minHeight = function () {
+  return this.inner.minHeight() + 1;
+};
+UnderlinedCell.prototype.draw = function (width, height) {
+  return this.inner.draw(width, height - 1).concat([repeat("-", width)]);
+};
+
+function dataTable(data) {
+  var keys = Object.keys(data[0]);
+  var headers = keys.map(function (name) {
+    return new UnderlinedCell(new TextCell(name));
+  });
+  var body = data.map(function (row) {
+    return keys.map(function (name) {
+      return new TextCell(String(row[name]));
+    });
+  });
+  return [headers].concat(body);
+}
+
+fs.readFile('mountains.json',function (err,data) {
+  var mountains = JSON.parse(data);
+
+  console.log();
+  console.log(drawTable(dataTable(mountains)));
+});
